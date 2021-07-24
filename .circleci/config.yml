@@ -11,10 +11,8 @@ working_dir: &working_dir ~/app
     - run: bundle exec rake rubocop
     - run:
         name: Run tests
-        command: |
-          bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
-          ./cc-test-reporter after-build --exit-code $?
-  working_directory: *working_dir
+        - run: chmod +x ./deploy.sh
+        - run: ./deploy.sh
 
 version: 2.0
 
