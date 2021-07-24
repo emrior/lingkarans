@@ -9,10 +9,8 @@ working_dir: &working_dir ~/app
     - run: gem install bundler:2.1.4
     - run: bundle install --jobs=4 --retry=4 --path vendor/bundle
     - run: bundle exec rake rubocop
-    - run:
-        name: Run tests
-        - run: chmod +x ./deploy.sh
-        - run: ./deploy.sh
+    - run: chmod +x ./deploy.sh
+    - run: ./deploy.sh
 
 version: 2.0
 
